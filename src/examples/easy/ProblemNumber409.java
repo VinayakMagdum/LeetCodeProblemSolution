@@ -6,7 +6,7 @@ import java.util.HashSet;
 /**
  * https://leetcode.com/problems/longest-palindrome/
  */
-public class ProblemNNumber409 {
+public class ProblemNumber409 {
     public static void main(String[] args) {
         System.out.println(longestPalindrome("aa"));
     }
