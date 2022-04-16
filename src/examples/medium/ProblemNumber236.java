@@ -1,5 +1,7 @@
 package examples.medium;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
  */
@@ -62,5 +64,50 @@ public class ProblemNumber236 {
         } else {
             return right;
         }
+    }
+
+
+    private static TreeNode lca(TreeNode node, TreeNode p, TreeNode q) {
+        Stack<TreeNode> pathToJ = pathToX(node, p);
+        Stack<TreeNode> pathToK = pathToX(node, q);
+        TreeNode lcaToReturn = null;
+
+        while (!pathToJ.isEmpty() && !pathToK.isEmpty()) {
+            TreeNode jPop = pathToJ.pop();
+            TreeNode kPop = pathToK.pop();
+            if (jPop == kPop) {
+                lcaToReturn = jPop;
+            } else {
+                break;
+            }
+        }
+        return lcaToReturn;
+    }
+
+
+    public static Stack<TreeNode> pathToX(TreeNode root, TreeNode x) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root == x) {
+            Stack<TreeNode> path = new Stack<TreeNode>();
+            path.push(root);
+            return path;
+        }
+
+        Stack<TreeNode> leftPath = pathToX(root.left, x);
+        if (leftPath != null) {
+            leftPath.push(root);
+            return leftPath;
+        }
+
+        Stack<TreeNode> rightPath = pathToX(root.right, x);
+        if (rightPath != null) {
+            rightPath.push(root);
+            return rightPath;
+        }
+
+        return null;
     }
 }

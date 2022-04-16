@@ -1,10 +1,13 @@
 package examples.easy;
 
+/**
+ * https://leetcode.com/problems/majority-element/
+ */
 public class ProblemNumber169 {
 
     public static void main(String[] args) {
         ProblemNumber169 obj = new ProblemNumber169();
-        int[] arr = new int[]{2,2,1,1,1,2,2};
+        int[] arr = new int[]{3, 1, 3, 3, 2, 3, 1, 3};
         System.out.println(obj.majorityElement(arr));
     }
 
@@ -22,7 +25,7 @@ public class ProblemNumber169 {
                 else
                     counter --;
             }
-        }
+        }//for i
         return candidate;
     }
 }
