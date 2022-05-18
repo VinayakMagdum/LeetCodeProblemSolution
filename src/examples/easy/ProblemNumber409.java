@@ -8,7 +8,7 @@ import java.util.HashSet;
  */
 public class ProblemNumber409 {
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("aa"));
+        System.out.println(longestPalindrome("asaasa"));
     }
 
 

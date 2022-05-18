@@ -7,7 +7,7 @@ public class ProblemNumber680 {
 
     public static void main(String[] args) {
 
-        String s = "abca";
+        String s = "madam";
         System.out.println(validPalindrome(s));
 
     }
