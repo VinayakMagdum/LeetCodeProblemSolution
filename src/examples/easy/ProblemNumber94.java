@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 public class ProblemNumber94 {
-    class  TreeNode {
+    static class  TreeNode {
         public int val;
         public TreeNode left;
         public TreeNode right;
@@ -16,9 +16,20 @@ public class ProblemNumber94 {
         TreeNode(int val) {
             this.val = val;
         }
+
     }
 
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public static void main(String[] args) {
+        TreeNode node = new TreeNode(3);
+        node.left = new TreeNode(9);
+        node.right =  new TreeNode(20);
+        node.right.left =  new TreeNode(15);
+        node.right.right =  new TreeNode(7);
+
+        System.out.println(inorderTraversal(node).toString());
+    }
+
+    public static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         TreeNode node = root;
         traverseInorder(node, result);

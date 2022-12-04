@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 public class ProblemNumber451 {
 
     public static void main(String[] args) {
-        String str = "Aabb";
+        String str = "tree";
         System.out.println(frequencySort(str));
     }
 
 
     private static String frequencySort(String s) {
         Map<Character, Integer> map = new HashMap<>();
-        PriorityQueue<Character> queue = new PriorityQueue<>((x,y)->map.get(y) - map.get(x));
-        for(char ch:s.toCharArray()) {
+        PriorityQueue<Character> queue = new PriorityQueue<>((x,y)-> map.get(y) - map.get(x));
+        for(char ch : s.toCharArray()) {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
         for(char ch: map.keySet()) {
