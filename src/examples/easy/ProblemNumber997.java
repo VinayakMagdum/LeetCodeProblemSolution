@@ -15,33 +15,25 @@ public class ProblemNumber997 {
                 {2,1}
         };
 
-        System.out.println(findJudge(3, arr));
+        System.out.println(findJudge(2, arr));
 
     }
 
     private static int findJudge(int n, int[][] trust) {
-
-         Map<Integer, Integer> map = new HashMap<>();
-
-        for(int i =0; i < trust.length; i++) {
-            int val = trust[i][1];
-            int follow = trust[i][0];
-            if(map.containsKey(follow)) {
-                map.put(follow, map.get(follow)-1);
-            }
-            if(map.containsKey(val)) {
-                map.put(val, map.get(val)+1);
-            } else {
-                map.put(val, 1);
-            }
+        int[] arr = new int[n];
+        for(int i = 0; i < trust.length; i++) {
+            int value = trust[i][0];
+            int follow = trust[i][1];
+            arr[follow-1]++;
+            arr[value-1]--;
         }
-        for (Map.Entry entry : map.entrySet()) {
-            if((int)entry.getValue() == n-1) {
-                return (int)entry.getKey();
+
+        for(int idx = 0; idx < arr.length; idx++ ) {
+            if(arr[idx] == n-1) {
+                return idx+1;
             }
         }
 
         return -1;
-
     }
 }
