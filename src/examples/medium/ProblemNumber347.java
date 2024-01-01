@@ -7,13 +7,14 @@ import java.util.*;
  */
 public class ProblemNumber347 {
     public static void main(String[] args) {
-//        int[] arr = new int[]{1,1,1,2,2,3,3,3,3};
+//        int[] arr = new int[]{1,1,1,2,2,3};
         int[] arr = new int[]{1,2};
         System.out.println(topKFrequent(arr, 2));
     }
 
     private static int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> count = new HashMap<>();
+
         int max = 0;
 
         for(int i = 0; i < nums.length; i++) {
