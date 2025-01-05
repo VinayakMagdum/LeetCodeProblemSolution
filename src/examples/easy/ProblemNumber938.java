@@ -1,5 +1,8 @@
 package examples.easy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProblemNumber938 {
     static class TreeNode {
         int val;
@@ -31,7 +34,7 @@ public class ProblemNumber938 {
 
         node.right.right =  new TreeNode(18);
 
-        System.out.println(rangeSumBST(node, 7, 15));
+        System.out.println(rangeSumBST2(node, 7, 15));
     }
 
     public static int rangeSumBST(TreeNode root, int low, int high) {
@@ -49,4 +52,25 @@ public class ProblemNumber938 {
         return root.val + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high);
     }
 
+    public static int rangeSumBST2(TreeNode root, int low, int high) {
+        int ans = 0;
+        List<Integer> list = new ArrayList<>();
+        traverse(root, low, high, list);
+        for (int num : list){
+            ans += num;
+        }
+        return ans;
+    }
+
+    public static void traverse(TreeNode root, int low, int high, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        if (root.val <= high && root.val >= low) {
+            list.add(root.val);
+        }
+
+        traverse(root.left, low, high, list);
+        traverse(root.right, low, high, list);
+    }
 }
