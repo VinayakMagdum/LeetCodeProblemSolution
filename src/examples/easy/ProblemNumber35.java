@@ -13,6 +13,7 @@ public class ProblemNumber35 {
 
     /**
      * Find index where we can insert target
+     * Time Complexity - O(n)
      *
      * @param nums
      * @param target
@@ -32,5 +33,30 @@ public class ProblemNumber35 {
             result =  nums.length;
         }
         return result;
+    }
+
+    /**
+     * Find index where we can insert target
+     * Time Complexity - O(log n)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int searchInsert2(int[] nums, int target) {
+        int mid = 0;
+        int left = 0; int right = nums.length;
+
+        while (left < right) {
+            mid = (right + left) / 2;
+            if(nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid+1;
+            } else {
+                right = mid;
+            }
+        }
+        return nums[mid] < target ? mid+1 : mid;
     }
 }
