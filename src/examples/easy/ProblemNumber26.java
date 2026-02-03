@@ -20,15 +20,14 @@ public class ProblemNumber26 {
     }
 
     public int removeDuplicates(int[] nums) {
-        if(nums.length == 0) return 0;
-        int unique = 1;
-        for (int i = 1; i< nums.length; i++){
-            if (nums[i] != nums[i-1]) {
-                nums[unique] = nums[i];
-                unique++;
+        if(nums.length < 2) return 0;
+        int slow = 0;
+        for (int fast = 1; fast < nums.length; fast++) {
+            if (nums[slow] != nums[fast]) {
+                slow++;
+                nums[slow] = nums[fast];
             }
-
         }
-        return unique;
+        return slow + 1;
     }
 }

@@ -11,21 +11,18 @@ public class ProblemNumber169 {
         System.out.println(obj.majorityElement(arr));
     }
 
-    public int majorityElement(int[] num) {
-        int candidate = num[0];
-        int counter = 1;
-        for (int i = 1; i < num.length; i ++){
-            if (counter == 0){
-                candidate = num[i];
-                counter = 1;
+    public int majorityElement(int[] nums) {
+        int element = 0, count = 0;
+        for(int num : nums) {
+            if (count == 0){
+                element = num;
+                count++;
+            } else if (num == element) {
+                count++;
+            } else {
+                count--;
             }
-            else{
-                if (num[i] == candidate)
-                    counter ++;
-                else
-                    counter --;
-            }
-        }//for i
-        return candidate;
+        }
+        return element;
     }
 }
