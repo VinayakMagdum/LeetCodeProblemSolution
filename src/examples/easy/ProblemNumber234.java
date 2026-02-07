@@ -32,6 +32,12 @@ public class ProblemNumber234 {
 
     }
 
+    /**
+     * TC - O(n)
+     * SC - O(n)
+     * @param head
+     * @return
+     */
     public static boolean isPalindrome(ListNode head) {
         StringBuilder sb = new StringBuilder();
         while (head != null) {
@@ -47,6 +53,43 @@ public class ProblemNumber234 {
             start++;
             end--;
         }
+        return true;
+    }
+
+    /**
+     * TC - O(n)
+     * SC - O(1)
+     * @param head
+     * @return
+     */
+    public boolean isPalindrome2(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode prev = null;
+        ListNode curr = slow;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        ListNode secondHalf = prev;
+
+        ListNode firstHalf = head;
+
+        while (secondHalf != null) {
+            if (firstHalf.val != secondHalf.val) {
+                return false;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
         return true;
     }
 }

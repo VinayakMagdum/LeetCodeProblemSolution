@@ -61,4 +61,45 @@ public class ProblemNumber160 {
         }
         return l1;
     }
+
+    private static ListNode getIntersectionNode2 (ListNode headA, ListNode headB) {
+        ListNode a = headA;
+        ListNode b = headB;
+        int lengthA = 0;
+        int lengthB = 0;
+        while (a!= null) {
+            lengthA++;
+            a = a.next;
+        }
+        while (b != null) {
+            lengthB++;
+            b = b.next;
+        }
+
+        a = headA;
+        b = headB;
+        if (lengthA > lengthB) {
+            int diff = lengthA - lengthB;
+            while (diff > 0) {
+                a = a.next;
+                diff--;
+            }
+        } else {
+            int diff = lengthB - lengthA;
+            while (diff > 0) {
+                b = b.next;
+                diff--;
+            }
+        }
+
+        while (a!= null && b != null) {
+            if (a == b) {
+                return a;
+            }
+            a = a.next;
+            b = b.next;
+        }
+
+        return null;
+    }
 }
