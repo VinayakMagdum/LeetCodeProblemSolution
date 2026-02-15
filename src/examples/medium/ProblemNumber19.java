@@ -35,35 +35,32 @@ public class ProblemNumber19 {
     }
 
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode temp = head;
+        ListNode dummy = head;
         int length = 0;
-        while(temp != null) {
+
+        // Find length
+        while (dummy != null) {
             length++;
-            temp = temp.next;
+            dummy = dummy.next;
         }
 
-        int eleToRemove = length - n;
-        List<Integer> list = new ArrayList<>();
+        // Remove head
+        if (length == n) {
+            return head.next;
+        }
 
-        int index = 0;
-        while (head != null) {
-            System.out.println(head.val);
-            if(index != eleToRemove) {
-                list.add(head.val);
-            }
-            index++;
-            head = head.next;
+        int target = length - n - 1;
+        dummy = head;
+
+        // Move to previous node
+        for (int i = 0; i < target; i++) {
+            dummy = dummy.next;
         }
-        if (list.size() > 0) {
-            ListNode result = new ListNode(list.get(0));
-            for (int i = 1; i < list.size(); i++) {
-                result.next = new ListNode(list.get(i));
-                result = result.next;
-            }
-            return result;
-        } else {
-            return null;
-        }
+
+        // Delete node
+        dummy.next = dummy.next.next;
+
+        return head;
     }
 
 }

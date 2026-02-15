@@ -1,5 +1,8 @@
 package examples.medium;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 
  */
@@ -22,5 +25,26 @@ public class ProblemNumber3 {
     public static void main(String[] args) {
         String s = "dvdf";
         System.out.println(lengthOfLongestSubstring(s));
+    }
+
+    private static int lengthOfLongestSubstring2(String s) {
+        if(s.isEmpty()) {
+            return 0;
+        }
+        int left = 0;
+        int ans = 1;
+        Set<Character> set = new HashSet<>();
+
+        for (int right = 0; right < s.length(); right++) {
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(s.charAt(right));
+
+            // Update max length
+            ans = Math.max(ans, right - left + 1);
+        }
+        return ans;
     }
 }

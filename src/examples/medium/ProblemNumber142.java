@@ -62,6 +62,30 @@ public class ProblemNumber142 {
         return slower;
     }
 
+    public ListNode detectCycle2(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        boolean doesCycleExists = false;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                doesCycleExists = true;
+                break;
+            }
+        }
+
+        if (!doesCycleExists) return null;
+        ListNode start = head;
+        while(true) {
+            if(start == slow) {
+                return start;
+            }
+            start = start.next;
+            slow = slow.next;
+        }
+    }
+
 
     public static void main(String[] args) {
 
